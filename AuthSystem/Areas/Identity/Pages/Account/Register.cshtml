@@ -6,20 +6,51 @@
 }
 
 <form id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" method="post">
+    <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
+    <div class="text-center">
+        <h2 class="RegistrationCardsHead">@ViewData["Title"]</h2>
+        <p class="RegistrationCardsBody">to continue create business cards</p>
+        <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
+    </div>
+    <div class="mb-1">
+        <input asp-for="Input.Email" class="form-control" autocomplete="username" aria-required="true" placeholder="name@example.com" />
+        <span asp-validation-for="Input.Email" class="text-danger"></span>
+    </div>
+    <div class="mb-1">
+        <input asp-for="Input.UserNamer" class="form-control" autocomplete="firstname" aria-required="true" placeholder="user name" />
+    </div>
+
+    <div class="mb-1">
+        <input asp-for="Input.Password" class="form-control" autocomplete="new-password" aria-required="true" placeholder="password" />
+        <span asp-validation-for="Input.Password" class="text-danger"></span>
+    </div>
+
+@*     <div class="mb-1">
+        <input asp-for="Input.ConfirmPassword" class="form-control" autocomplete="new-password" aria-required="true" placeholder="password" />
+        <label asp-for="Input.ConfirmPassword">Confirm Password</label>
+        <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+    </div> *@
+    @* <button id="registerSubmit" type="submit" class="w-100 btn btn-lg btn-primary">Register</button> *@
+
+    <button id="registerSubmit" type="submit" class="btn w-100 mb-3" style="background-color: dimgray; border-radius:7px; font-size: 12px; color: whitesmoke;">Create</button>
+</form>
+<div style="display: flex; align-items: center; justify-content:center">
+    <p class="my-auto h-100" style="font-size:12px; color: dimgray">Already account ? </p>
+    <button style="border: none; padding: 0; background:none; margin-left: 1%;font-size:12px; color: dimgray; text-decoration:none;"><a style=" text-decoration: none;  color: darkslategrey; " href="/Identity/Account/Login"> Login </a></button>
+</div>
+
+
+
+
+@* <form id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" method="post">
     <h2>Create a new account.</h2>
     <hr />
     <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
     <div class="row">
         <div class="col-6">
             <div class="form-floating mb-3">
-                <input asp-for="Input.FirstName" class="form-control" autocomplete="firstname" aria-required="true" placeholder="first name" />
-                <label asp-for="Input.FirstName">First Name</label>
-            </div>
-        </div>
-        <div class="col-6">
-            <div class="form-floating mb-3">
-                <input asp-for="Input.LastName" class="form-control" autocomplete="lastname" aria-required="true" placeholder="last name" />
-                <label asp-for="Input.LastName">Last Name</label>
+                <input asp-for="Input.UserNamer" class="form-control" autocomplete="firstname" aria-required="true" placeholder="first name" />
+                <label asp-for="Input.UserNamer">First Name</label>
             </div>
         </div>
     </div>
@@ -39,7 +70,7 @@
         <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
     </div>
     <button id="registerSubmit" type="submit" class="w-100 btn btn-lg btn-primary">Register</button>
-</form>
+</form> *@
 
 
 @section Scripts {

@@ -1,0 +1,55 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+@using Microsoft.AspNetCore.Identity
+@using AuthSystem.Areas.Identity.Data
+
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+@{
+    Layout = "/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="row">
+    <div class="col-sm-3 mb-3 mb-sm-0">
+        <div class="card px-2 py-4 m-2 cardingBorderR">
+            <div style="display: flex; align-items: center; justify-content:space-evenly;">
+                <i class="bi bi-person-vcard-fill" style="font-size: 2em;"></i>
+                <p class="my-auto h-100 fw-bold">Create Cards</p>
+            </div>
+        </div>
+        <div class="card px-2 py-4 m-2 cardingBorderR">
+            <div style="display: flex; align-items: center; justify-content:space-evenly;">
+                <i class="bi bi-person-vcard-fill" style="font-size: 2em;"></i>
+                <p class=" my-auto h-100  fw-bold">View Cards</p>
+            </div>
+        </div>
+        @if (User.IsInRole("Admin")) {
+            <div class="card px-2 py-4 m-2 cardingBorderR">
+                <div style="display: flex; align-items: center; justify-content:space-evenly;">
+                    <i class="bi bi-person-fill" style="font-size: 2em;"></i>
+                    <p class=" my-auto h-100  fw-bold">Create Users</p>
+                </div>
+            </div>
+            <div class="card px-2 py-4 m-2 cardingBorderR">
+                <div style="display: flex; align-items: center; justify-content:space-evenly;">
+                    <i class="bi bi-person-fill" style="font-size: 2em;"></i>
+                    <p class=" my-auto h-100  fw-bold">View Users</p>
+                </div>
+            </div>
+            <div class="card px-2 py-4 m-2 cardingBorderR">
+                <div style="display: flex; align-items: center; justify-content:space-evenly;">
+                    <i class="bi bi-archive-fill" style="font-size: 2em;"></i>
+                    <p class=" my-auto h-100  fw-bold">View Orders</p>
+                </div>
+            </div>
+        }
+    </div>
+
+    <div class="col-sm-9 mb-3 mb-sm-0">
+        @RenderBody()
+    </div>
+</div>

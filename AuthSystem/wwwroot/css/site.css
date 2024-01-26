@@ -18,7 +18,6 @@ html {
 }
 
 body {
-  margin-bottom: 60px;
   font-family:Roboto,sans-serif;
 }
 
@@ -45,3 +44,25 @@ body {
 .login-logout-card .card-body {
     padding: 10px 20px;
 }
+
+.cardingBorderR{ 
+    border-radius: 1.3em;
+}
+
+.card-image {
+    height: 10em;
+    background: url("https://cardlinesbc.com/assets/images/cover.jpg");
+    background-size: cover;
+}
+.ImageCardBorderR {
+    border-top-left-radius: 1.3em;
+    border-top-right-radius: 1.3em;
+}
+
+@media (min-width: 768px) {
+    .w-md-50 {
+        width: 50%;
+    }
+}
+
+

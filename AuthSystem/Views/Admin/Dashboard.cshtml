@@ -1,0 +1,161 @@
+﻿@model AuthSystem.Views.Admin.DashboardModel
+
+@{
+    Layout = "~/Views/Admin/AdminLayout.cshtml";
+}
+
+
+<div>
+    <div class="row">
+        <div class="card col-sm-9 mb-3 mb-sm-0 cardingBorderR">
+            <div class="card mx-auto mt-2 w-md-50 ImageCardBorderR">
+                @*
+                    Header Image
+                *@
+                <div class="card-image ImageCardBorderR">
+                </div>
+                @*
+                    Company Name and Image
+                *@
+                <div class="CompanyNameProfile d-flex m-2 align-items-center justify-content-between">
+                    <div style="border: 4px solid dimgray; border-radius: 50%; width:50px; height:50px; display: flex; justify-content: center; align-items: center">
+                        <i class="bi bi-camera"></i>
+                    </div>
+                    <div>
+                        <input type="text" class="form-control" asp-for="Input.CompanyName" placeholder="Company Name"/>
+                    </div>
+                </div>
+                @*
+                    User Profile
+                *@
+                <div class="d-flex m-2">
+                    <div>
+                        <input type="file" id="myFile" style="visibility:hidden;" />
+                        <!-- Create a custom button and label -->
+                        <div class="position-relative w-auto d-flex gap-3 p-2">
+                            <img style="border-radius: 10%" width="50%" src="https://cardlinesbc.com/assets/images/avatar.png"/>
+                            <div style="flex-direction: column; display: flex; gap: .2em;">
+                                <button id="customButton" class="btn btn-primary" style="right:100">Choose File</button>
+                                <input type="text" class="form-control" asp-for="Input.FirstName" placeholder="First Name" />
+                                <input type="text" class="form-control" asp-for="Input.LastName" placeholder="Second Name" />
+                                <input type="text" class="form-control" asp-for="Input.Designation" placeholder="Designation" />
+                            </div>
+                        </div>
+                        @*
+                            COlor Pallet Box
+                        *@
+                        <div class="d-flex justify-content-center align-items-center gap-3">
+                            <h3>Color Picker</h3>
+                            <input type="color" asp-for="Input.Color" style="border: none;" />
+                        </div>
+                        @*
+                            About ME
+                        *@
+                        <div>
+                            <h3>About Me</h3>
+                            <textarea asp-for="Input.AboutMe" name="editor1"></textarea>
+
+                        </div>
+
+                        @*
+                            Contact Info
+                        *@
+                        <div class="my-2">
+                            <div class="dropdown">
+                                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Dropdown button
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li class="dropdown-item" onclick={AddButton(1)}>Phone</li>
+                                    <li class="dropdown-item" onclick={AddButton(2)}>Email</li>
+                                    <li class="dropdown-item">Address</li>
+                                </ul>
+                            </div>
+                            <div class="m-2">
+                                <ul class="list-group contacts">
+                                    <li>
+                                        <input type="tel" />
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-3 mb-3 mb-sm-0">
+            <div class="card p-4 m-2 cardingBorderR">
+                Create Card
+            </div>
+            <div class="card p-4 m-2 cardingBorderR">
+                Create Card
+            </div>
+            <div class="card p-4 m-2 cardingBorderR">
+                Create Card
+            </div>
+            <div class="card p-4 m-2 cardingBorderR">
+                Create Card
+            </div>
+            <div class="card p-4 m-2 cardingBorderR">
+                Create Card
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    function AddButton(type) {
+        const li = document.createElement('li');
+
+        // Create a new input element
+        const input = document.createElement('input');
+
+        // Select the ul with the class 'contacts'
+        const ul = document.querySelector('.contacts');
+
+        // Append the list item to the ul
+        switch (type) {
+            case 1:
+                input.type = 'text
+                input.placeholder = 'Enter contact';    
+
+                // Append the input to the list item
+                li.appendChild(input);
+                break;
+            case 2:
+                input.type = 'email';
+                input.placeholder = 'Enter email';
+
+                // Append the input to the list item
+                li.appendChild(input);
+                break;
+            case 3:
+                input.type = 'text';
+                input.placeholder = 'Enter address';
+
+                // Append the input to the list item
+                li.appendChild(input);
+        }
+
+        ul.appendChild(li);
+    }
+    // Get the elements
+        CKEDITOR.replace('editor1');
+    var customButton = document.getElementById('customButton');
+    var customText = document.getElementById('customText');
+    var myFile = document.getElementById('myFile');
+
+    // When the custom button is clicked, click the file input
+    customButton.addEventListener('click', function () {
+        myFile.click();
+    });
+
+    // When a file is selected, update the custom text
+    myFile.addEventListener('change', function () {
+        if (myFile.value) {
+            customText.innerHTML = myFile.value.match(/[\/\\]([\w\d\s\.\-\(\)]+)$/)[1];
+        } else {
+            customText.innerHTML = 'No file chosen, yet.';
+        }
+    });
+</script>
